@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Map, MapPin, Navigation, Download, Bell } from 'lucide-react';
+import { Search, MapPin, Navigation, Download, Bell } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Badge from '../components/Badge';
+
+// Kolkata Paschim booth coordinates for Google Maps embed
+const BOOTH_LAT = 22.5726;
+const BOOTH_LNG = 88.3639;
+const MAPS_EMBED_URL = `https://maps.google.com/maps?q=${BOOTH_LAT},${BOOTH_LNG}&z=16&output=embed`;
 
 export default function ConstituencyFinder() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,6 +18,7 @@ export default function ConstituencyFinder() {
     e.preventDefault();
     if (searchQuery.trim()) {
       setHasSearched(true);
+      if (window.trackEvent) window.trackEvent('constituency_search', 'engagement', searchQuery.trim());
     }
   };
 
@@ -27,41 +33,44 @@ export default function ConstituencyFinder() {
       </div>
 
       {/* Search Bar */}
-      <form onSubmit={handleSearch} className="mb-8 relative">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      <form onSubmit={handleSearch} className="mb-8 relative" role="search" aria-label="Constituency search">
+        <label htmlFor="constituency-search" className="sr-only">Search by PIN code, locality or EPIC number</label>
+        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
           <Search className="h-5 w-5 text-slate-400" />
         </div>
         <input 
-          type="text" 
+          id="constituency-search"
+          type="search" 
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value.slice(0, 50))}
           placeholder="Enter PIN code, Locality or EPIC Number..."
           className="w-full bg-navy-2 border border-white/10 rounded-lg pl-12 pr-4 py-4 text-lg text-white focus:border-[#f59e0b] focus:ring-1 focus:ring-[#f59e0b] outline-none transition-all placeholder:text-slate-500"
+          maxLength={50}
+          autoComplete="off"
+          aria-required="true"
         />
-        <Button type="submit" className="absolute right-2 top-2 bottom-2">Search</Button>
+        <Button type="submit" className="absolute right-2 top-2 bottom-2" aria-label="Search constituency">Search</Button>
       </form>
 
       {hasSearched && (
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
           
-          {/* Map Placeholder */}
-          <div className="relative w-full h-64 bg-navy-3 rounded-xl border border-white/10 overflow-hidden">
-            {/* Grid Pattern */}
-            <div className="absolute inset-0" style={{ 
-              backgroundImage: 'linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 184, 166, 0.1) 1px, transparent 1px)', 
-              backgroundSize: '20px 20px' 
-            }} />
-            
-            {/* Pulsing Dot */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-              <div className="absolute w-12 h-12 bg-[#f59e0b]/20 rounded-full animate-ping-slow" />
-              <div className="relative w-4 h-4 bg-[#f59e0b] rounded-full border-2 border-white flex items-center justify-center">
-                <MapPin size={24} className="text-[#f59e0b] absolute -top-8 drop-shadow-md" />
-              </div>
-            </div>
-
-            <div className="absolute bottom-4 left-4 bg-navy-card/90 backdrop-blur border border-white/10 px-3 py-1.5 rounded text-sm font-mono text-white">
-              Your Booth Location
+          {/* Google Maps Embed */}
+          <div className="relative w-full h-72 rounded-xl border border-white/10 overflow-hidden" role="region" aria-label="Polling booth location map">
+            <iframe
+              title="Polling Booth Location — Kolkata Paschim"
+              src={MAPS_EMBED_URL}
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.8)' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              aria-label="Google Maps showing polling booth location"
+            />
+            <div className="absolute bottom-4 left-4 bg-[#0a0e1a]/90 backdrop-blur border border-[#f59e0b]/30 px-3 py-1.5 rounded text-sm font-mono text-[#f59e0b] flex items-center gap-2">
+              <MapPin size={14} aria-hidden="true" />
+              Room 2, Assembly High School
             </div>
           </div>
 
@@ -73,33 +82,40 @@ export default function ConstituencyFinder() {
                   <Badge variant="teal">Match Found</Badge>
                   <span className="text-sm font-mono text-slate-400">WB-01</span>
                 </div>
-                <h3 className="text-2xl font-display font-bold text-white mb-4">Kolkata Paschim</h3>
+                <h2 className="text-2xl font-display font-bold text-white mb-4">Kolkata Paschim</h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-6">
+                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-6">
                   <div>
-                    <span className="text-slate-500 block mb-1">Polling Booth</span>
-                    <strong className="text-white">Room 2, Assembly High School</strong>
+                    <dt className="text-slate-500 mb-1">Polling Booth</dt>
+                    <dd className="text-white font-semibold">Room 2, Assembly High School</dd>
                   </div>
                   <div>
-                    <span className="text-slate-500 block mb-1">Returning Officer</span>
-                    <strong className="text-white">Amitabh Sen, IAS</strong>
+                    <dt className="text-slate-500 mb-1">Returning Officer</dt>
+                    <dd className="text-white font-semibold">Amitabh Sen, IAS</dd>
                   </div>
                   <div className="sm:col-span-2">
-                    <span className="text-slate-500 block mb-1">Booth Address</span>
-                    <strong className="text-white block">12, BBD Bagh East, Kolkata 700001</strong>
+                    <dt className="text-slate-500 mb-1">Booth Address</dt>
+                    <dd className="text-white font-semibold">12, BBD Bagh East, Kolkata 700001</dd>
                   </div>
-                </div>
+                </dl>
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                  <Button variant="ghost" className="flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20">
-                    <Navigation size={16} /> Directions
+                  <a
+                    href={`https://maps.google.com/maps?q=${BOOTH_LAT},${BOOTH_LNG}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Get directions to polling booth in Google Maps"
+                    className="btn-ghost flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20"
+                    onClick={() => window.trackEvent && window.trackEvent('get_directions', 'engagement', 'constituency_finder')}
+                  >
+                    <Navigation size={16} aria-hidden="true" /> Directions
+                  </a>
+                  <Button variant="ghost" className="flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20" aria-label="Download voter slip">
+                    <Download size={16} aria-hidden="true" /> Download Slip
                   </Button>
-                  <Button variant="ghost" className="flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20">
-                    <Download size={16} /> Download Slip
-                  </Button>
-                  <Button variant="ghost" className="flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20 text-[#f59e0b] border-[#f59e0b]/30">
-                    <Bell size={16} /> Set Reminder
+                  <Button variant="ghost" className="flex-1 sm:flex-none flex items-center justify-center gap-2 border-white/20 text-[#f59e0b] border-[#f59e0b]/30" aria-label="Set election day reminder">
+                    <Bell size={16} aria-hidden="true" /> Set Reminder
                   </Button>
                 </div>
               </div>

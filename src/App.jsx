@@ -30,7 +30,7 @@ function MainLayout({ children }) {
       <div className="fixed top-[40%] left-[40%] w-[400px] h-[400px] rounded-full pointer-events-none -z-10" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)' }}></div>
       
       <Header />
-      <main className="relative z-0">{children}</main>
+      <main id="main-content" className="relative z-0">{children}</main>
     </div>
   );
 }

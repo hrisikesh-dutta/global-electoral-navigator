@@ -42,14 +42,20 @@ export default function VoterVerifyModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-md animate-[fadeIn_0.2s_ease-in-out]">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4" onClick={onClose} role="presentation" aria-label="Modal overlay">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-md animate-[fadeIn_0.2s_ease-in-out]"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="verify-modal-title"
+      >
         <Card className="relative overflow-hidden bg-navy-card">
-          <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-white">
-            <X size={20} />
+          <button onClick={onClose} aria-label="Close verification modal" className="absolute top-4 right-4 text-slate-400 hover:text-white">
+            <X size={20} aria-hidden="true" />
           </button>
           
-          <h2 className="text-xl font-display font-bold text-white mb-6 pr-8">Verify Electoral Roll</h2>
+          <h2 id="verify-modal-title" className="text-xl font-display font-bold text-white mb-6 pr-8">Verify Electoral Roll</h2>
           
           {!result && (
             <form onSubmit={handleSubmit} className="space-y-4">

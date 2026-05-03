@@ -5,15 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f59e0b" />
+    <meta name="description" content="Navigate India's 2026 elections with personalized timelines, voter verification, and constituency finder in your language." />
     <meta property="og:title" content="GlobalElect — Electoral Navigator" />
     <meta property="og:description" content="Navigate India's 2026 elections with personalized timelines in your language." />
     <meta property="og:image" content="/placeholder-og.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://global-electoral-navigator.vercel.app" />
     <title>GlobalElect — Electoral Navigator</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500&family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLOBALELECT1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GLOBALELECT1', {
+        page_title: 'GlobalElect Electoral Navigator',
+        page_location: window.location.href
+      });
+      // Custom event helper exposed globally
+      window.trackEvent = function(action, category, label) {
+        gtag('event', action, { event_category: category, event_label: label });
+      };
+    </script>
   </head>
   <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[999] focus:bg-amber-500 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:font-bold">
+      Skip to main content
+    </a>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
