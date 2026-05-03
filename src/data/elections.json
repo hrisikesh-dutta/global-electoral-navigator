@@ -1,0 +1,32 @@
+[
+  {
+    "id": "elec-1",
+    "name": "India General Elections 2026",
+    "type": "National",
+    "country": "India",
+    "phasesCount": 7,
+    "dateRange": "Mar 15, 2026 - May 25, 2026",
+    "isPriority": true,
+    "phases": [
+      { "phase": 1, "status": "completed", "date": "Mar 15, 2026", "regions": "UP, Bihar" },
+      { "phase": 2, "status": "completed", "date": "Mar 30, 2026", "regions": "MH, MP" },
+      { "phase": 3, "status": "active", "date": "Apr 15, 2026", "regions": "West Bengal, Assam" },
+      { "phase": 4, "status": "upcoming", "date": "Apr 30, 2026", "regions": "Karnataka, Kerala" },
+      { "phase": 5, "status": "upcoming", "date": "May 10, 2026", "regions": "Delhi, Punjab" },
+      { "phase": 6, "status": "upcoming", "date": "May 20, 2026", "regions": "Gujarat, Rajasthan" },
+      { "phase": 7, "status": "upcoming", "date": "May 25, 2026", "regions": "Remaining areas" }
+    ]
+  },
+  {
+    "id": "elec-2",
+    "name": "Delhi Assembly Elections 2025",
+    "type": "State",
+    "country": "India",
+    "phasesCount": 1,
+    "dateRange": "Feb 08, 2025 - Feb 08, 2025",
+    "isPriority": false,
+    "phases": [
+      { "phase": 1, "status": "completed", "date": "Feb 08, 2025", "regions": "Delhi NCR" }
+    ]
+  }
+]

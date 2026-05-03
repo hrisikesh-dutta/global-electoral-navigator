@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "navigate": "Navigate",
+    "learn": "Learn",
+    "register": "Register"
+  },
+  "landing": {
+    "heroTitle": "Your Electoral Journey,\nStep by Step",
+    "heroSub": "Navigate India's 2026 elections with personalized timelines in your language.",
+    "detectLocation": "Detected: West Bengal",
+    "stateInfo": "West Bengal · 42 Lok Sabha seats · Election Q1 2026",
+    "beginNav": "Begin Navigation →",
+    "stats": {
+      "voters": "96.8 Cr",
+      "constituencies": "543",
+      "languages": "22+"
+    }
+  }
+}

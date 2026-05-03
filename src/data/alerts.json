@@ -1,0 +1,37 @@
+[
+  {
+    "id": "alert-1",
+    "type": "warning",
+    "title": "System Maintenance",
+    "message": "Scheduled maintenance on the Voter ID lookup database tonight at 2:00 AM IST.",
+    "timestamp": "2026-05-02T10:00:00Z"
+  },
+  {
+    "id": "alert-2",
+    "type": "info",
+    "title": "New Constituencies Added",
+    "message": "3 new mock constituencies have been added to the West Bengal electoral roll.",
+    "timestamp": "2026-05-01T15:30:00Z"
+  },
+  {
+    "id": "alert-3",
+    "type": "success",
+    "title": "Translation Complete",
+    "message": "Bengali translation for Phase 2 components has reached 100% coverage.",
+    "timestamp": "2026-04-28T09:15:00Z"
+  },
+  {
+    "id": "alert-4",
+    "type": "error",
+    "title": "API Gateway Timeout",
+    "message": "We experienced a 5-minute outage in the SMS gateway integration.",
+    "timestamp": "2026-04-25T14:22:00Z"
+  },
+  {
+    "id": "alert-5",
+    "type": "info",
+    "title": "Elections Schedule Update",
+    "message": "The ECI has revised Phase 4 dates. Please review the updated timeline.",
+    "timestamp": "2026-04-20T11:00:00Z"
+  }
+]

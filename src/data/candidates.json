@@ -1,0 +1,35 @@
+[
+  {
+    "id": "C-001",
+    "constituencyId": "WB-01",
+    "name": "Dr. Ananya Banerjee",
+    "party": "All India Trinamool Congress",
+    "partyCode": "AITC",
+    "symbol": "Flowers and Grass",
+    "age": 45,
+    "education": "Ph.D",
+    "status": "Accepted"
+  },
+  {
+    "id": "C-002",
+    "constituencyId": "WB-01",
+    "name": "Rahul Chatterjee",
+    "party": "Bharatiya Janata Party",
+    "partyCode": "BJP",
+    "symbol": "Lotus",
+    "age": 52,
+    "education": "M.B.A",
+    "status": "Accepted"
+  },
+  {
+    "id": "C-003",
+    "constituencyId": "WB-01",
+    "name": "Siddharth Bose",
+    "party": "Communist Party of India (Marxist)",
+    "partyCode": "CPI(M)",
+    "symbol": "Hammer, Sickle and Star",
+    "age": 60,
+    "education": "M.A",
+    "status": "Accepted"
+  }
+]

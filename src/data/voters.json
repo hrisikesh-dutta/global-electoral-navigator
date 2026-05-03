@@ -1,0 +1,47 @@
+[
+  {
+    "epic": "WB/01/232/123456",
+    "name": "Arjun Das",
+    "dob": "1990-01-01",
+    "constituencyId": "WB-01",
+    "constituencyName": "Kolkata Paschim",
+    "boothId": "1250",
+    "boothName": "Room 2, Assembly High School"
+  },
+  {
+    "epic": "XYZ1234567",
+    "name": "Test User",
+    "dob": "1990-01-01",
+    "constituencyId": "WB-01",
+    "constituencyName": "Kolkata Paschim",
+    "boothId": "1250",
+    "boothName": "Room 2, Assembly High School"
+  },
+  {
+    "epic": "DL/05/111/987654",
+    "name": "Priya Sharma",
+    "dob": "1985-05-12",
+    "constituencyId": "DL-05",
+    "constituencyName": "New Delhi",
+    "boothId": "110",
+    "boothName": "Primary School Building"
+  },
+  {
+    "epic": "MH/12/456/112233",
+    "name": "Rohan Patil",
+    "dob": "1992-11-23",
+    "constituencyId": "MH-12",
+    "constituencyName": "Pune",
+    "boothId": "890",
+    "boothName": "Community Hall, Kothrud"
+  },
+  {
+    "epic": "KA/03/789/445566",
+    "name": "Deepa Reddy",
+    "dob": "1988-08-08",
+    "constituencyId": "KA-03",
+    "constituencyName": "Bengaluru South",
+    "boothId": "505",
+    "boothName": "Govt PU College"
+  }
+]

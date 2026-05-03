@@ -1,0 +1,14 @@
+[
+  {
+    "id": "WB-01",
+    "state": "West Bengal",
+    "name": "Kolkata Paschim",
+    "type": "General",
+    "electors": 1824500,
+    "pollingStations": 1250,
+    "phase": 7,
+    "electionDate": "2026-05-20",
+    "returningOfficer": "Amitabh Sen, IAS",
+    "hqAddress": "12, BBD Bagh East, Kolkata 700001"
+  }
+]
